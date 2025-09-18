@@ -35,7 +35,7 @@ export function HeroSection() {
             <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-primary to-secondary p-1">
               <div className="w-full h-full rounded-full bg-background flex items-center justify-center">
                 <img
-                  src="/professional-portrait-young-man-developer.jpg"
+                  src="/dianfauzi.jpg"
                   alt="M Dian Fauzi"
                   className="w-28 h-28 rounded-full object-cover"
                 />
@@ -75,7 +75,7 @@ export function HeroSection() {
               variant="outline"
               size="lg"
               className="px-8 py-3 text-lg font-medium bg-transparent"
-              onClick={() => window.open("mailto:mdianfauzi@example.com")}
+              onClick={() => window.open("mailto:dianfauzi7673@gmail.com")}
             >
               Get In Touch
               <Mail className="ml-2 h-5 w-5" />
@@ -88,7 +88,7 @@ export function HeroSection() {
               variant="ghost"
               size="icon"
               className="hover:text-primary hover:bg-primary/10"
-              onClick={() => window.open("https://github.com/mdianfauzi", "_blank")}
+              onClick={() => window.open("https://github.com/dianfauzi16", "_blank")}
             >
               <Github className="h-6 w-6" />
               <span className="sr-only">GitHub</span>
