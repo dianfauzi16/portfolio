@@ -32,12 +32,12 @@ export function HeroSection() {
         >
           {/* Profile Image */}
           <div className="mb-8">
-            <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-primary to-secondary p-1">
+            <div className="w-52 h-52 mx-auto rounded-full bg-gradient-to-br from-primary to-secondary p-1">
               <div className="w-full h-full rounded-full bg-background flex items-center justify-center">
                 <img
-                  src="/dianfauzi.jpg"
+                  src="/Formal.png"
                   alt="M Dian Fauzi"
-                  className="w-28 h-28 rounded-full object-cover"
+                  className="w-48 h-48 rounded-full object-cover"
                 />
               </div>
             </div>
@@ -45,7 +45,7 @@ export function HeroSection() {
 
           {/* Main Heading */}
           <h1 className="font-heading font-bold text-4xl sm:text-5xl lg:text-6xl mb-6 text-balance">
-            <span className="text-foreground">Hi, I'm </span>
+            <span className="text-foreground">Hai, saya </span>
             <span className="text-primary">M Dian Fauzi</span>
           </h1>
 
@@ -56,9 +56,7 @@ export function HeroSection() {
 
           {/* Description */}
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12 text-pretty leading-relaxed">
-            Passionate about creating innovative web solutions and exploring the fascinating world of artificial
-            intelligence. Currently pursuing my degree in Informatics while building projects that bridge technology and
-            real-world problems.
+            Saya memiliki minat besar dalam menciptakan solusi web yang inovatif dan mengeksplorasi dunia kecerdasan buatan yang menarik. Saat ini saya sedang menempuh pendidikan di bidang Informatika sambil membangun berbagai proyek yang menjembatani teknologi dengan permasalahan di dunia nyata..
           </p>
 
           {/* CTA Buttons */}
@@ -68,16 +66,16 @@ export function HeroSection() {
               size="lg"
               className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 text-lg font-medium"
             >
-              View My Work
+              Project Saya
               <ArrowDown className="ml-2 h-5 w-5" />
             </Button>
             <Button
               variant="outline"
               size="lg"
               className="px-8 py-3 text-lg font-medium bg-transparent"
-              onClick={() => window.open("mailto:dianfauzi7673@gmail.com")}
+              onClick={() => window.open("mailto:dianf7673@gmail.com")}
             >
-              Get In Touch
+              Hubungi Saya
               <Mail className="ml-2 h-5 w-5" />
             </Button>
           </div>

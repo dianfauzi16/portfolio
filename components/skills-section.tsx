@@ -17,6 +17,7 @@ const skillCategories = [
   {
     title: "Backend Development",
     skills: [
+      { name: "PHP", level: 85 },
       { name: "Node.js", level: 78 },
       { name: "Python", level: 85 },
     ],
@@ -50,6 +51,7 @@ const allSkills = [
   "Data Analysis",
   "SQL",
   "MongoDB",
+  "PHP",
 ]
 
 export function SkillsSection() {
@@ -97,15 +99,15 @@ export function SkillsSection() {
         >
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="font-heading font-bold text-3xl sm:text-4xl mb-4 text-primary">Skills & Technologies</h2>
+            <h2 className="font-heading font-bold text-3xl sm:text-4xl mb-4 text-primary">Keahlian & Teknologi</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-              A comprehensive overview of my technical skills and proficiency levels
+              Gambaran menyeluruh tentang keterampilan teknis saya dan tingkat penguasaan saya dalam berbagai teknologi.
             </p>
           </div>
 
           {/* Skills Overview */}
           <div className="mb-12">
-            <h3 className="font-heading font-semibold text-xl mb-6 text-center">Technologies I Work With</h3>
+            <h3 className="font-heading font-semibold text-xl mb-6 text-center">Teknologi yang Saya Gunakan</h3>
             <div className="flex flex-wrap justify-center gap-3">
               {allSkills.map((skill, index) => (
                 <Badge

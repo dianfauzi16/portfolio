@@ -1,97 +1,134 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useEffect, useRef, useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Mail, Github, Linkedin, Instagram, Music } from "lucide-react"
-import { useToast } from "@/hooks/use-toast"
+import { useEffect, useRef, useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Mail, Github, Linkedin, Instagram, Music } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import emailjs from "@emailjs/browser"; // 1. Import library-nya
 
 export function ContactSection() {
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(false);
   const [formData, setFormData] = useState({
+    title: "",
     name: "",
     email: "",
     message: "",
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const sectionRef = useRef<HTMLElement>(null)
-  const { toast } = useToast()
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const { toast } = useToast();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true)
+          setIsVisible(true);
         }
       },
       { threshold: 0.1 },
-    )
+    );
 
     if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+      observer.observe(sectionRef.current);
     }
 
-    return () => observer.disconnect()
-  }, [])
+    return () => observer.disconnect();
+  }, []);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
+    // 1. Ambil data dari state formData
+    const templateParams = {
+      title: formData.title, // Sesuai dengan {{title}} di subjek EmailJS
+      name: formData.name, // Sesuai dengan {{name}}
+      email: formData.email, // Sesuai dengan {{email}}
+      message: formData.message, // Sesuai dengan {{message}}
+    };
+
+    try {
+      // 2. Proses pengiriman via EmailJS
+      const response = await emailjs.send(
+        "service_zcbebgo",
+        "template_5q8qlkw",
+        templateParams,
+        "Fug07NfooGaDfiQiH",
+      );
+
+      // 3. Jika berhasil (status 200)
+      if (response.status === 200) {
+        toast({
+          title: "Message Sent Successfully! 🚀",
+          description: `Thanks ${formData.name}, your message has been sent to Dian's email.`,
+          variant: "default", // Memberikan warna default/sukses (biasanya biru atau hijau tergantung tema)
+        });
+
+        // Reset form agar input kosong kembali
+        setFormData({ title: "", name: "", email: "", message: "" });
+      }
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+
+      // 4. Notifikasi jika gagal (misal: kuota habis atau internet mati)
       toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I'll get back to you soon!",
-      })
-      setFormData({ name: "", email: "", message: "" })
-      setIsSubmitting(false)
-    }, 1000)
-  }
+        variant: "destructive", // Memberikan warna merah (error)
+        title: "Failed to Send Message ❌",
+        description:
+          "Something went wrong. Please check your connection or try again later.",
+      });
+    } finally {
+      // 5. Matikan status loading pada tombol
+      setIsSubmitting(false);
+    }
+  };
 
   const socialLinks = [
     {
       name: "Email",
       icon: Mail,
-      url: "mailto:mdianfauzi@example.com",
-      handle: "mdianfauzi@example.com",
+      url: "mailto:dianf7673@gmail.com",
+      handle: "dianf7673@gmail.com",
     },
     {
       name: "GitHub",
       icon: Github,
-      url: "https://github.com/mdianfauzi",
-      handle: "@mdianfauzi",
+      url: "https://github.com/dianfauzi16",
+      handle: "@dianfauzi16",
     },
     {
       name: "LinkedIn",
       icon: Linkedin,
-      url: "https://linkedin.com/in/mdianfauzi",
-      handle: "/in/mdianfauzi",
+      url: "https://linkedin.com/in/dian-fauzi-7bb8332ab",
+      handle: "Dian Fauzi",
     },
     {
       name: "Instagram",
       icon: Instagram,
-      url: "https://instagram.com/mdianfauzi",
-      handle: "@mdianfauzi",
+      url: "https://instagram.com/m.dianfauzii",
+      handle: "@m.dianfauzii",
     },
     {
       name: "TikTok",
       icon: Music,
-      url: "https://tiktok.com/@mdianfauzi",
-      handle: "@mdianfauzi",
+      url: "https://tiktok.com/@dianfauzi16",
+      handle: "@Dianfauzi",
     },
-  ]
+  ];
 
   return (
     <section id="contact" ref={sectionRef} className="py-20">
@@ -103,9 +140,12 @@ export function ContactSection() {
         >
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="font-heading font-bold text-3xl sm:text-4xl mb-4 text-primary">Get In Touch</h2>
+            <h2 className="font-heading font-bold text-3xl sm:text-4xl mb-4 text-primary">
+              Get In Touch
+            </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-              Have a project in mind or want to collaborate? I'd love to hear from you!
+              Have a project in mind or want to collaborate? I'd love to hear
+              from you!
             </p>
           </div>
 
@@ -113,12 +153,36 @@ export function ContactSection() {
             {/* Contact Form */}
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
-                <CardTitle className="font-heading text-2xl text-primary">Send Me a Message</CardTitle>
+                <CardTitle className="font-heading text-2xl text-primary">
+                  Send Me a Message
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-2">
+                    <label
+                      htmlFor="title"
+                      className="block text-sm font-medium mb-2"
+                    >
+                      Title
+                    </label>
+                    <Input
+                      id="title"
+                      name="title"
+                      type="text"
+                      required
+                      value={formData.title}
+                      onChange={handleInputChange}
+                      placeholder="Masukan Judul Pesan"
+                      className="w-full"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium mb-2"
+                    >
                       Name
                     </label>
                     <Input
@@ -134,7 +198,10 @@ export function ContactSection() {
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium mb-2"
+                    >
                       Email
                     </label>
                     <Input
@@ -150,7 +217,10 @@ export function ContactSection() {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium mb-2">
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-medium mb-2"
+                    >
                       Message
                     </label>
                     <Textarea
@@ -165,7 +235,11 @@ export function ContactSection() {
                     />
                   </div>
 
-                  <Button type="submit" className="w-full bg-primary hover:bg-primary/90" disabled={isSubmitting}>
+                  <Button
+                    type="submit"
+                    className="w-full bg-primary hover:bg-primary/90"
+                    disabled={isSubmitting}
+                  >
                     {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>
                 </form>
@@ -176,17 +250,24 @@ export function ContactSection() {
             <div className="space-y-8">
               <Card className="hover:shadow-lg transition-shadow">
                 <CardHeader>
-                  <CardTitle className="font-heading text-2xl text-primary">Let's Connect</CardTitle>
+                  <CardTitle className="font-heading text-2xl text-primary">
+                    Let's Connect
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground mb-6 leading-relaxed text-pretty">
-                    I'm always open to discussing new opportunities, interesting projects, or just having a chat about
-                    technology and innovation. Feel free to reach out through any of these platforms!
+                    I'm always open to discussing new opportunities, interesting
+                    projects, or just having a chat about technology and
+                    innovation. Feel free to reach out through any of these
+                    platforms!
                   </p>
 
                   <div className="space-y-4">
                     {socialLinks.map((link) => (
-                      <div key={link.name} className="flex items-center space-x-4">
+                      <div
+                        key={link.name}
+                        className="flex items-center space-x-4"
+                      >
                         <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
                           <link.icon className="h-5 w-5 text-primary" />
                         </div>
@@ -209,10 +290,14 @@ export function ContactSection() {
               {/* Quick Contact */}
               <Card className="bg-gradient-to-br from-primary/5 to-secondary/5 border-primary/20">
                 <CardContent className="p-6 text-center">
-                  <h3 className="font-heading font-semibold text-xl mb-2">Quick Contact</h3>
-                  <p className="text-muted-foreground mb-4">For immediate inquiries</p>
+                  <h3 className="font-heading font-semibold text-xl mb-2">
+                    Quick Contact
+                  </h3>
+                  <p className="text-muted-foreground mb-4">
+                    For immediate inquiries
+                  </p>
                   <Button
-                    onClick={() => window.open("mailto:mdianfauzi@example.com")}
+                    onClick={() => window.open("mailto:dianf7673@gmail.com")}
                     className="bg-primary hover:bg-primary/90"
                   >
                     <Mail className="mr-2 h-4 w-4" />
@@ -225,5 +310,5 @@ export function ContactSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -35,9 +35,9 @@ export function AboutSection() {
         >
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="font-heading font-bold text-3xl sm:text-4xl mb-4 text-primary">About Me</h2>
+            <h2 className="font-heading font-bold text-3xl sm:text-4xl mb-4 text-primary">Tentang Saya</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-              Get to know more about my journey in technology and my passion for innovation
+              Kenali lebih jauh tentang perjalanan saya di dunia teknologi dan passion saya terhadap inovasi.
             </p>
           </div>
 
@@ -46,7 +46,7 @@ export function AboutSection() {
             <div className="relative">
               <div className="relative z-10">
                 <img
-                  src="/professional-developer-working-on-laptop-modern-of.jpg"
+                  src="/Mode-serius.png"
                   alt="M Dian Fauzi working"
                   className="rounded-lg shadow-2xl w-full max-w-md mx-auto"
                 />
@@ -58,18 +58,13 @@ export function AboutSection() {
             <div className="space-y-6">
               <div>
                 <h3 className="font-heading font-semibold text-2xl mb-4 text-foreground">
-                  Passionate Informatics Student
+                  Mahasiswa Informatika yang Bersemangat dan Berdedikasi
                 </h3>
                 <p className="text-muted-foreground leading-relaxed mb-6 text-pretty">
-                  I'm currently pursuing my degree in Informatics, where I've discovered my passion for the intersection
-                  of web development, data science, and machine learning. My journey began with curiosity about how
-                  technology can solve real-world problems, and it has evolved into a deep commitment to creating
-                  innovative solutions.
+                  Saat ini saya sedang menempuh pendidikan di bidang Informatika, di mana saya menemukan minat saya pada persimpangan antara pengembangan web, sains data, dan machine learning. Perjalanan saya dimulai dari rasa ingin tahu tentang bagaimana teknologi dapat menyelesaikan permasalahan di dunia nyata, dan hal tersebut berkembang menjadi komitmen yang mendalam untuk menciptakan solusi yang inovatif.
                 </p>
                 <p className="text-muted-foreground leading-relaxed text-pretty">
-                  When I'm not coding, you'll find me exploring the latest tech trends, contributing to open-source
-                  projects, or experimenting with new frameworks and tools. I believe in continuous learning and staying
-                  at the forefront of technological advancement.
+                  Ketika saya tidak sedang melakukan coding, Anda dapat menemukan saya sedang mengeksplorasi tren teknologi terbaru, berkontribusi pada proyek open-source, atau bereksperimen dengan framework dan tools baru. Saya percaya pada pembelajaran berkelanjutan dan selalu berusaha untuk tetap berada di garis depan perkembangan teknologi.
                 </p>
               </div>
 
@@ -80,7 +75,7 @@ export function AboutSection() {
                     <Code className="h-8 w-8 text-primary mb-3" />
                     <h4 className="font-semibold mb-2">Web Development</h4>
                     <p className="text-sm text-muted-foreground">
-                      Building responsive, user-friendly web applications with modern frameworks
+                      Membangun aplikasi web yang responsif dan ramah pengguna dengan framework modern.
                     </p>
                   </CardContent>
                 </Card>
@@ -90,7 +85,7 @@ export function AboutSection() {
                     <Database className="h-8 w-8 text-primary mb-3" />
                     <h4 className="font-semibold mb-2">Data Science</h4>
                     <p className="text-sm text-muted-foreground">
-                      Extracting insights from data to drive informed decision-making
+                      Mengolah dan menganalisis data untuk menghasilkan wawasan yang mendukung pengambilan keputusan yang tepat.
                     </p>
                   </CardContent>
                 </Card>
@@ -99,7 +94,7 @@ export function AboutSection() {
                   <CardContent className="p-6">
                     <Brain className="h-8 w-8 text-primary mb-3" />
                     <h4 className="font-semibold mb-2">Machine Learning</h4>
-                    <p className="text-sm text-muted-foreground">Developing intelligent systems that learn and adapt</p>
+                    <p className="text-sm text-muted-foreground">Mengembangkan sistem cerdas yang dapat belajar dan beradaptasi.</p>
                   </CardContent>
                 </Card>
 
@@ -108,7 +103,7 @@ export function AboutSection() {
                     <GraduationCap className="h-8 w-8 text-primary mb-3" />
                     <h4 className="font-semibold mb-2">Continuous Learning</h4>
                     <p className="text-sm text-muted-foreground">
-                      Always exploring new technologies and expanding my skillset
+                      Selalu mengeksplorasi teknologi baru dan mengembangkan keterampilan saya.
                     </p>
                   </CardContent>
                 </Card>

@@ -158,7 +158,7 @@ export function ProjectsSection() {
 
           {/* View More Projects */}
           <div className="text-center mt-12">
-            <Button variant="outline" size="lg" onClick={() => window.open("https://github.com/mdianfauzi", "_blank")}>
+            <Button variant="outline" size="lg" onClick={() => window.open("https://github.com/dianfauzi16/", "_blank")}>
               View More Projects on GitHub
               <ExternalLink className="ml-2 h-5 w-5" />
             </Button>
